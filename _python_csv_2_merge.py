@@ -16,5 +16,5 @@ def merge_csv_files(directory):
     print("DONE => 'merged_output_merged.csv'")
 
 if __name__ == "__main__":
-    directory = "/Users/cazofeifamadrigal/Documents/python-scripts/snyk_sma/sma" 
+    directory = "sma" 
     merge_csv_files(directory)
