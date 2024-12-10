@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Launch _python_csv_1_remove_cols.py",
+            "program": "${workspaceFolder}/${input:scriptName}",
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "type": "pickString",
+            "id": "scriptName",
+            "description": "Select the Python script to launch",
+            "options": [
+                "_python_csv_1_remove_cols.py",
+                "_python_csv_2_merge.py",
+                "_python_csv_3_clean_cvs.py",
+                "_python_csv_4_split_ref_types.py",
+                "_python_csv_5_nuget_geturl.py",
+                "_python_csv_6_npm__pre_geturl.py",
+                "_python_csv_6_npm_geturl.py",
+                "_python_csv_7_export_xls.py",
+                "_python_csv_8_export_md.py",
+            ]
+        }
+    ]
+}
