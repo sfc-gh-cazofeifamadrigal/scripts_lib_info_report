@@ -17,7 +17,7 @@ export SNYK_API_TOKEN=your-api-token
 ./generate_report.sh
 
 # With verbose output
-./generate_report.sh --verbose
+./generate_report.sh input_nuget/ input_npm/ out/ expected/open-source-libraries.md --verbose
 ```
 
 The script will automatically:

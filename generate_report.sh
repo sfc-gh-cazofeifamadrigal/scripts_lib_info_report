@@ -24,14 +24,10 @@ echo ""
 # Parse arguments
 SNYK_ORG_ID="${SNYK_ORG_ID:-}"
 SNYK_API_TOKEN="${SNYK_API_TOKEN:-}"
-INPUT_NUGET_DIR="${1:-input_nuget/}"
-INPUT_NPM_DIR="${2:-input_npm/}"
-OUTPUT_DIR="${3:-out/}"
-REFERENCE_FILE="${4:-expected/open-source-libraries.md}"
 VERBOSE=""
 SKIP_FETCH=false
 
-# Check for flags
+# First pass: extract flags
 for arg in "$@"; do
     if [ "$arg" = "--verbose" ] || [ "$arg" = "-v" ]; then
         VERBOSE="--verbose"
@@ -42,6 +38,20 @@ for arg in "$@"; do
         echo "⏭️  Skipping Snyk API fetch"
     fi
 done
+
+# Second pass: extract positional arguments (skip flags)
+POSITIONAL_ARGS=()
+for arg in "$@"; do
+    if [ "$arg" != "--verbose" ] && [ "$arg" != "-v" ] && [ "$arg" != "--skip-fetch" ]; then
+        POSITIONAL_ARGS+=("$arg")
+    fi
+done
+
+# Set defaults for positional arguments
+INPUT_NUGET_DIR="${POSITIONAL_ARGS[0]:-input_nuget/}"
+INPUT_NPM_DIR="${POSITIONAL_ARGS[1]:-input_npm/}"
+OUTPUT_DIR="${POSITIONAL_ARGS[2]:-out/}"
+REFERENCE_FILE="${POSITIONAL_ARGS[3]:-expected/open-source-libraries.md}"
 
 echo "📊 Configuration:"
 echo "   NuGet Input: $INPUT_NUGET_DIR"
